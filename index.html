@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <html>
+
     <head>
         <title>网课预约管理</title>
         <script src="./public/vue.global.js"></script>
+        <script src="./public/vue-router.global.js"></script>
     </head>
 
     <body>
-        <div id='app'>
-            <div>{{ msg }}</div>
-            <button type="button" @click="jumpToLogin" style="height: 30px; width: 50px;"></button>
-        </div>
+        <p>
+            <div id='app'>
+                <div>{{ msg }}</div>
+                <button type="button" @click="jumpToLogin">点击跳转</button>
+            </div>
+        </p>
 
         <script src="./index.js"></script>
     </body>
+
 </html>

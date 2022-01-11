@@ -1,12 +1,12 @@
 const app = Vue.createApp({
     data() {
         return {
-            msg: "Hello, world!h",
+            msg: "login"
         }
     },
     methods: {
-        jumpToLogin () {
-            window.location.href='/login/index.html';
+        comeback () {
+            window.history.go(-1)
         }
     },
 })
