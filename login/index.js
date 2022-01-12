@@ -7,6 +7,9 @@ const app = Vue.createApp({
     methods: {
         comeback () {
             window.history.go(-1)
+        },
+        login () {
+            window.location.href = '../home/index.html'
         }
     },
 })
