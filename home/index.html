@@ -1,13 +1,46 @@
 <!DOCTYPE html>
 <html>
+
     <head>
+        <meta charset="utf-8">
         <script src="../public/vue.global.js"></script>
+        <link rel="stylesheet" type="text/css" href="index.css">
     </head>
 
     <body>
-        <p>Home page</p>
+        <p id='header'>
+            Home page
+        </p>
+        <!-- <a href="javascript:" onClick="window.open('http://www.bilibili.com')">布丁足迹</a> -->
 
+        <p id='app'>
+            <template v-if="showSearch">
+                <div class="search-box">
+                    <input type="text" placeholder="输入课程名" id="input" v-model='key' @keyup.enter='clickSearch' />
+                    <button type="button" id="input-button" @click='clickSearch'>查找</button>
+                    <button type="button" id="add-button" @click='clickAdd'>添加新课程</button>
+                </div>
+            </template>
+            <template v-for="(item, index) in list">
+                <div class="item-box">
+                    <!-- <div>{{ item }}</div> -->
+                    <img :src="item.image" class='item-img'>
+                    <div class="item-info">
+                        <div class='item-title'>{{ item.name }}</div>
+                        <div>老师：{{ item.teacher }}</div>
+                        <div>时间：{{ item.startTime }} ~ {{ item.endTime }}</div>
+                        <div>预约人数：{{ item.currentNum }} / {{ item.total }}</div>
+                        <div>简介：{{item.desc}}</div>
+                    </div>
+                    <div class="item-buttons">
+                        <button type="button" id="update-button" @click='clickUpdate'>修改</button>
+                        <button type="button" id="del-button" @click.stop='clickDel(item.id, index, $event)'>删除</button>
+                    </div>
+                </div>
+            </template>
+        </p>
 
         <script src="./index.js"></script>
     </body>
+
 </html>
