@@ -1,4 +1,5 @@
 const AccessHeader = 'http://127.0.0.1:8080'
+const Token = "123"
 
 // APIs
 const ApiHost = 'http://127.0.0.1:8080'
@@ -50,7 +51,7 @@ const app = Vue.createApp({
     name: "home",
     data() {
         return {
-            token: 'oooo',
+            token: Token,
             total: 2,
             list: CourseExp,
             showSearch: true,
@@ -58,10 +59,15 @@ const app = Vue.createApp({
             // 课程修改的表单内容
             showForm: false,
             putForm: OriginPutForm,
+            formIdx: 0,
         }
     },
     computed: {},
+    created () {
+        this.Refresh()
+    },
     methods: {
+        // 点击搜索课程列表
         clickSearch() {
             let url = ApiHost + CourseSearchPath
             url += "?key=" + this.key
@@ -105,13 +111,15 @@ const app = Vue.createApp({
                 .catch(error => {
                     console.error(error)
                 })
+
+            console.log('list---', this.list)
         },
         // 添加新课程
         clickAdd() {
             window.location.href = "../addcourse/addcourse.html"
         },
         // 点击修改课程，跳出表单
-        clickUpdate(item, e) {
+        clickUpdate(item, idx, e) {
             console.log('update params:', item)
             this.putForm = {
                 id: item.id,
@@ -124,6 +132,7 @@ const app = Vue.createApp({
                 image: item.image,
                 price: item.price,
             }
+            this.formIdx = idx
             this.showForm = true
         },
         // 点击关闭表单
@@ -153,6 +162,8 @@ const app = Vue.createApp({
                 'end_time': form.endTime,
                 'period': 100,
             }
+            let index = this.formIdx
+            console.log('---------', index, JSON.stringify(data))
 
             // 更新课程请求
             fetch(url, {
@@ -175,6 +186,9 @@ const app = Vue.createApp({
                     alert('修改课程成功')
                     this.showForm = false
                     this.putForm = OriginPutForm
+
+                    // 更新课程列表
+                    this.list[index] = form
                 })
                 .catch(res => {
                     alert('程序内部错误！')
