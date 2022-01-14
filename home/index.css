@@ -111,12 +111,15 @@ body {
 #form-body {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    /* justify-content: center; */
+    align-items: baseline;
     height: 100%;
 }
 
-
+.form-item{
+    margin-top: 10px;
+    margin-left: 200px;
+}
 
 .header-box{
     display: flex;
@@ -126,4 +129,13 @@ body {
     margin-left: 500px;
     width: 30px;
     height: 30px;
+}
+
+.confirm{  
+    width: 80px;
+    height: 40px;
+    margin-left: 480px;
+    margin-top: 20px;
+    border-radius: 8px;
+    background-color: #1890FF;
 }

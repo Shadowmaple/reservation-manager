@@ -28,7 +28,7 @@
                 </div>
                 <hr>
                 <div id='form-body'>
-                    <div class="form-item">
+                    <div class="form-item" style="margin-top: 60px;">
                         <label>课程名:</label>
                         <input type="text" v-model="putForm.name" />
                     </div>
@@ -50,14 +50,14 @@
                     </div>
                     <div class="form-item">
                         <label>课程简介:</label>
-                        <textarea v-model='putForm.desc'></textarea>
+                        <textarea style="vertical-align: top;" v-model='putForm.desc'></textarea>
                     </div>
                     <div class="form-item">
                         <label>图片地址:</label>
                         <input type="text" v-model="putForm.image" />
                     </div>
+                    <button class="confirm" @click.stop='clickUpdateConfirm'>确认</button>
                 </div>
-                <button class="confirm" @click.stop='clickUpdateConfirm'>确认</button>
             </div>
 
         </template>
