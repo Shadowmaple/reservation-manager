@@ -2,50 +2,64 @@
 <html>
 
 <head>
-    <script src="../public/vue.global.js"></script>
     <link rel="stylesheet" type="text/css" href="addcourse.css">
 </head>
 
 <body>
-    <div id='page'>
-        <div class="box">
-            <div class="inputItem">
-                <div style="display: inline;">课程名:</div>
-                <input class="input" style="display: inline;">
+    <div class="page">
+        <img id="back" onclick="clickback()" src="./image/back.png" style="width: 50px;height: 50px;position: fixed;left: 50px;top: 50px;">
+        <div class="form">
+            <div class="header">添加课程</div>
+            <div class="form-item">
+                <img src="./image/course.png" style="width: 20px;height: 20px;vertical-align: middle;">
+                <label>课程名:</label>
+                <input id="course_name" style="margin-left: 50px;" type="text">
             </div>
-            <div class="inputItem">
-                <div style="display: inline;">教师姓名:</div>
-                <input class="input" style="display: inline;">
+            <div class="form-item">
+                <img src="./image/teacher.png" style="width: 20px;height: 20px;vertical-align: middle;">
+                <label>教师姓名:</label>
+                <input id="teacher_name" style="margin-left: 35px;" type="text">
             </div>
-            <div class="inputItem">
-                <div style="display: inline;">课程总人数:</div>
-                <input class="input" style="display: inline;">
+            <div class="form-item">
+                <img src="./image/person.png" style="width: 20px;height: 20px;vertical-align: middle;">
+                <label>班级限制人数:</label>
+                <input id="restrict_number" style="margin-left: 4px;" type="text">
             </div>
-            <div class="inputItem">
-                <div style="display: inline;">所需积分:</div>
-                <input class="input" style="display: inline;">
+            <div class="form-item">
+                <img src="./image/time.png" style="width: 20px;height: 20px;vertical-align: middle;">
+                <label>开课时间:</label>
+                <input type="date" min="2017-01-01" max="2023-01-01" value="2022-01-01" id="start_time" style="margin-left: 35px;width: 155px;">
             </div>
-            <div class="inputItem">
-                <div style="display: inline;">时间:</div>
-                <input class="input" style="display: inline;">
+            <div class="form-item">
+                <img src="./image/time.png" style="width: 20px;height: 20px;vertical-align: middle;">
+                <label>结课时间:</label>
+                <input type="date" min="2017-01-01" max="2023-01-01" value="2022-01-02" id="end_time" style="margin-left: 35px;width: 155px;" >
             </div>
-            <div class="inputItem">
-                <div style="display: inline;">课时:</div>
-                <input class="input" style="display: inline;">
+            <div class="form-item">
+                <img src="./image/fengmian.png" style="width: 20px;height: 20px;vertical-align: middle;">
+                <label>课程封面:</label>
+                <input id="imgurl" style="margin-left: 35px;" type="text">
             </div>
-            <div class="inputItem">
-                <div style="display: inline;">课程简介:</div>
-                <input class="input" style="display: inline;">
+            <div class="form-item">
+                <img src="./image/point.png" style="width: 20px;height: 20px;vertical-align: middle;">
+                <label>课程所需积分:</label>
+                <input id="course_point" style="margin-left: 2px;" type="text">
             </div>
-            <div class="inputItem">
-                <div style="display: inline;">封面图片</div>
-                <input class="input" style="display: inline;">
+            <div class="form-item">
+                <img src="./image/period.png" style="width: 20px;height: 20px;vertical-align: middle;">
+                <label>课时:</label>
+                <input id="period" style="margin-left: 63px;" type="text">
             </div>
-        </div>
+            <div class="form-item">
+                <img src="./image/intro.png" style="width: 20px;height: 20px;vertical-align: middle;">
+                <label>课程简介:</label>
+                <textarea id="intro" style="width: 160px;height: 60px;vertical-align: top;margin-left: 33px;"  type="text"></textarea>
+            </div>
+            <button class="button1" onclick="sendclick()">发布</button>
+        </>
+        
     </div>
-
-    <script src="addcourse.js">
-    </script>
+    <script src="addcourse.js"></script>
 </body>
 
 </html>
