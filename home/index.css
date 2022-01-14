@@ -102,14 +102,15 @@ body {
 
 #form-box {
     position: fixed;
-    top: 200px;
+    top: 130px;
     height: 450px;
     width: 600px;
-    background-color: blanchedalmond;
+    background-color: white;
+    border: 2px solid #1890FF;
 }
 
 #form-body {
-    display: flex;
+    display: grid;
     flex-direction: column;
     /* justify-content: center; */
     align-items: baseline;
@@ -131,7 +132,7 @@ body {
     height: 30px;
 }
 
-.confirm{  
+.confirm{
     width: 80px;
     height: 40px;
     margin-left: 480px;

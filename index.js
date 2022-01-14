@@ -5,14 +5,16 @@ const app = Vue.createApp({
             token: "",
         }
     },
+    beforeMount() {
+        this.checkLogin()
+    },
     methods: {
         jumpToLogin () {
             window.location.href='/login/index.html';
         },
-        checkLogin(e) {
-            console.log('event: ', e)
+        checkLogin() {
             if (this.token == "") {
-                window.location.href = '/login/index.html?a=123'
+                window.location.href = '/login/login.html'
             } else {
                 window.location.href = '/home/index.html'
             }
