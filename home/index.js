@@ -1,11 +1,10 @@
 const AccessHeader = 'http://127.0.0.1:8080'
 
+// APIs
 const ApiHost = 'http://127.0.0.1:8080'
 const CourseListPath = '/course/list'
 const CourseSearchPath = '/course/search'
 const CourseDelPath = '/course/del'
-
-
 
 const CourseExp = [{
     id: 0,
@@ -42,6 +41,18 @@ const app = Vue.createApp({
             list: CourseExp,
             showSearch: true,
             key: '',
+            // 课程修改的表单内容
+            putForm: {
+                id: 2,
+                name: "网络",
+                teacher: "赵敏",
+                desc: "无聊",
+                startTime: "",
+                endTime: "",
+                total: 20,
+                image: "http://spoc.ccnu.edu.cn/images/notimg/notimg-1.jpg",
+                price: 20,
+            }
         }
     },
     computed: {},
@@ -134,6 +145,9 @@ const app = Vue.createApp({
         // 刷新课程列表
         Refresh () {
             this.clickSearch()
+        },
+        clickUpdateConfirm () {
+            alert('修改课程成功')
         }
     },
 })

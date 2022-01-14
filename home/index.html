@@ -12,7 +12,7 @@
             Home page
         </p>
         <!-- <a href="javascript:" onClick="window.open('http://www.bilibili.com')">布丁足迹</a> -->
-
+        <hr>
         <p id='app'>
             <template v-if="showSearch">
                 <div class="search-box">
@@ -20,6 +20,20 @@
                     <button type="button" id="input-button" @click='clickSearch'>查找</button>
                     <button type="button" id="add-button" @click='clickAdd'>添加新课程</button>
                 </div>
+
+                <div id='form-box'>
+                    <div>课程修改</div>
+                    <hr>
+                    <div id='form-body'>
+                        课程名：<input type="text" v-model="putForm.name"/>
+                        教师名：<input type="text" v-model='putForm.teacher'/>
+                        积分数：<input type="number" v-model='putForm.price'/>
+                        课程简介： <textarea></textarea>
+                        图片地址：<input type="text" v-model="putForm.image"/>
+                    </div>
+                    <button @click.stop='clickUpdateConfirm'>确认</button>
+                </div>
+
             </template>
             <template v-for="(item, index) in list">
                 <div class="item-box">
