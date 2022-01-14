@@ -9,10 +9,9 @@
 
 <body>
     <p id='header'>
-        Home page
+        课程管理
     </p>
-    <!-- <a href="javascript:" onClick="window.open('http://www.bilibili.com')">布丁足迹</a> -->
-    <hr>
+
     <p id='app'>
         <template v-if="showSearch">
             <div class="search-box">
@@ -23,39 +22,39 @@
 
             <div id='form-box' v-if="showForm">
                 <div class="header-box">
-                    <div style="width: 80px;height: 30px;">课程修改</div>
+                    <div class='form-title'>课程修改</div>
                     <img src="./image/close.png" class="close" @click.stop='clickCloseForm'></img>
                 </div>
-                <hr>
+
                 <div id='form-body'>
                     <div class="form-item" style="margin-top: 60px;">
-                        <label>课程名:</label>
-                        <input type="text" v-model="putForm.name" />
+                        <div class="form-column">课程名：</div>
+                        <input type="text" v-model="putForm.name" class="form-input" />
                     </div>
                     <div class="form-item">
-                        <label>教师名:</label>
-                        <input type="text" v-model='putForm.teacher' />
+                        <div class="form-column">教师名：</div>
+                        <input type="text" v-model='putForm.teacher' class="form-input" />
                     </div>
                     <div class="form-item">
-                        <label>开课时间:</label>
-                        <input type="date" min="2017-01-01" max="2023-01-01" class="time" v-model='putForm.startTime' />
+                        <div class="form-column">开课时间：</div>
+                        <input type="date" min="2017-01-01" max="2023-01-01" class="form-input" v-model='putForm.startTime' class="form-input" />
                     </div>
                     <div class="form-item">
-                        <label>结课时间:</label>
-                        <input type="date" min="2017-01-01" max="2023-01-01" class="time" v-model='putForm.endTime' />
+                        <div class="form-column">结课时间：</div>
+                        <input type="date" min="2017-01-01" max="2023-01-01" class="form-input" v-model='putForm.endTime' class="form-input" />
                     </div>
                     <div class="form-item">
-                        <label>积分数:</label>
-                        <input type="number" v-model.number='putForm.price' />
+                        <div class="form-column">积分数：</div>
+                        <input type="number" v-model.number='putForm.price' class="form-input" />
                     </div>
                     <div class="form-item">
-                        <label>课程简介:</label>
-                        <textarea style="vertical-align: top;" v-model='putForm.desc'></textarea>
+                        <div class="form-column">课程简介：</div>
+                        <textarea style="vertical-align: top;" v-model='putForm.desc' class="form-input"></textarea>
                     </div>
-                    <div class="form-item">
-                        <label>图片地址:</label>
-                        <input type="text" v-model="putForm.image" />
-                    </div>
+                </div>
+
+                <div id="form-footer">
+                    <button class="cancel" @click.stop='clickCloseForm'>取消</button>
                     <button class="confirm" @click.stop='clickUpdateConfirm'>确认</button>
                 </div>
             </div>

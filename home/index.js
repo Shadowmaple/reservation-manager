@@ -57,7 +57,7 @@ const app = Vue.createApp({
             showSearch: true,
             key: '', // 搜索关键字
             // 课程修改的表单内容
-            showForm: false,
+            showForm: true,
             putForm: OriginPutForm,
             formIdx: 0,
         }
