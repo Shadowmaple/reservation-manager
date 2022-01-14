@@ -1,0 +1,27 @@
+html, body {
+    height:100%;
+}
+#page{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.box{
+    width: 500px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: baseline;
+    background-color: blanchedalmond;
+    border: 1px soild black;
+}
+.inputItem{
+    margin-bottom: 10px;
+    margin-left: 80px;
+}
+.input{
+    margin-top: 1;
+}
