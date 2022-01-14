@@ -5,6 +5,7 @@ const ApiHost = 'http://127.0.0.1:8080'
 const CourseListPath = '/course/list'
 const CourseSearchPath = '/course/search'
 const CourseDelPath = '/course/del'
+const CoursePutPath = "/course"
 
 const CourseExp = [{
     id: 0,
@@ -32,6 +33,19 @@ const CourseExp = [{
     status: 1,
 }]
 
+const OriginPutForm = {
+    id: 0,
+    name: "网络",
+    teacher: "赵敏",
+    desc: "课程简介",
+    startTime: "2022-01-01",
+    endTime: "2022-12-31",
+    total: 20,
+    image: "http://spoc.ccnu.edu.cn/images/notimg/notimg-1.jpg",
+    price: 20,
+    // period: 100,
+}
+
 const app = Vue.createApp({
     name: "home",
     data() {
@@ -40,77 +54,134 @@ const app = Vue.createApp({
             total: 2,
             list: CourseExp,
             showSearch: true,
-            key: '',
+            key: '', // 搜索关键字
             // 课程修改的表单内容
-            putForm: {
-                id: 2,
-                name: "网络",
-                teacher: "赵敏",
-                desc: "无聊",
-                startTime: "",
-                endTime: "",
-                total: 20,
-                image: "http://spoc.ccnu.edu.cn/images/notimg/notimg-1.jpg",
-                price: 20,
-            }
+            showForm: false,
+            putForm: OriginPutForm,
         }
     },
     computed: {},
     methods: {
-        clickSearch () {
+        clickSearch() {
             let url = ApiHost + CourseSearchPath
             url += "?key=" + this.key
             console.log(url)
             this.key = ""
 
             fetch(url, {
-                method: "GET",
-                headers: {
-                    'Access-Control-Allow-Origin': AccessHeader,
-                    'token': this.token,
-                },
-            })
-            .then(res => res.json())
-            .then(res => {
-                console.log('request courseList res: ', res)
-                if (res.code != 0) {
-                    console.warn('request courseList error: ', res.code, res.msg)
-                    return
-                }
-                let list = new Array
-                for (let i = 0; i < res.data.length; i++) {
-                    let item = res.data[i]
-                    list.push({
-                        id: item.course_id,
-                        name: item.course_name,
-                        teacher: item.teacher_name,
-                        desc: item.course_desc,
-                        startTime: item.start_time,
-                        endTime: item.end_time,
-                        total: item.total,
-                        currentNum: item.current_num,
-                        image: item.image,
-                        price: item.price,
-                        status: item.status,
-                    })
-                }
-                console.log("list:", list)
-                this.list = list
-            })
-            .catch(error => {
-                console.error(error)
-            })
+                    method: "GET",
+                    headers: {
+                        'Access-Control-Allow-Origin': AccessHeader,
+                        'token': this.token,
+                    },
+                })
+                .then(res => res.json())
+                .then(res => {
+                    console.log('request courseList res: ', res)
+                    if (res.code != 0) {
+                        console.warn('request courseList error: ', res.code, res.msg)
+                        return
+                    }
+                    let list = new Array
+                    for (let i = 0; i < res.data.length; i++) {
+                        let item = res.data[i]
+                        list.push({
+                            id: item.course_id,
+                            name: item.course_name,
+                            teacher: item.teacher_name,
+                            desc: item.course_desc,
+                            startTime: item.start_time,
+                            endTime: item.end_time,
+                            total: item.total,
+                            currentNum: item.current_num,
+                            image: item.image,
+                            price: item.price,
+                            status: item.status,
+                        })
+                    }
+                    console.log("list:", list)
+                    this.list = list
+                })
+                .catch(error => {
+                    console.error(error)
+                })
         },
         // 添加新课程
-        clickAdd () {
-            alert('添加课程成功！')
+        clickAdd() {
+            window.location.href = "../addcourse/addcourse.html"
         },
-        // 更新课程
-        clickUpdate (e) {
-            alert('更新课程成功！')
+        // 点击修改课程，跳出表单
+        clickUpdate(item, e) {
+            console.log('update params:', item)
+            this.putForm = {
+                id: item.id,
+                name: item.name,
+                teacher: item.teacher,
+                desc: item.desc,
+                startTime: item.startTime,
+                endTime: item.endTime,
+                total: item.total,
+                image: item.image,
+                price: item.price,
+            }
+            this.showForm = true
+        },
+        // 点击关闭表单
+        clickCloseForm() {
+            this.showForm = false
+            this.putForm = OriginPutForm
+        },
+        // 点击提交修改表单
+        clickUpdateConfirm() {
+            var r = confirm("确认修改？");
+            if (r == false) {
+                console.log('用户已取消修改')
+                return
+            }
+
+            let url = ApiHost + CoursePutPath
+            let form = this.putForm
+            let data = {
+                'id': form.id,
+                'name': form.name,
+                'teacher': form.teacher,
+                'desc': form.desc,
+                'total': form.total,
+                'image': form.image,
+                'price': form.price,
+                'start_time': form.startTime,
+                'end_time': form.endTime,
+                'period': 100,
+            }
+
+            // 更新课程请求
+            fetch(url, {
+                    method: "POST",
+                    headers: {
+                        'Access-Control-Allow-Origin': AccessHeader,
+                        'token': this.token,
+                    },
+                    body: JSON.stringify(data),
+                })
+                .then(res => res.json())
+                .then(res => {
+                    console.log('request courseUpdate res: ', res)
+                    if (res.code != 0) {
+                        console.warn('request courseUpdate error: ', res.code, res.msg)
+                        alert('程序内部错误！')
+                        return
+                    }
+
+                    alert('修改课程成功')
+                    this.showForm = false
+                    this.putForm = OriginPutForm
+                })
+                .catch(res => {
+                    alert('程序内部错误！')
+                })
         },
         // 删除课程
-        clickDel (id, index, e) {
+        clickDel(id, index, e) {
             console.log('params:', id, index, e)
 
             var r = confirm("确认删除？");
@@ -121,34 +192,33 @@ const app = Vue.createApp({
 
             let url = ApiHost + CourseDelPath + '?id=' + id
 
+            // 删除课程请求
             fetch(url, {
-                method: "GET",
-                headers: {
-                    'Access-Control-Allow-Origin': AccessHeader,
-                    'token': this.token,
-                },
-            })
-            .then(res => res.json())
-            .then(res => {
-                console.log('request courseDel res: ', res)
-                if (res.code != 0) {
-                    console.warn('request courseDEl error: ', res.code, res.msg)
-                    return
-                }
-                alert('删除课程成功！')
+                    method: "GET",
+                    headers: {
+                        'Access-Control-Allow-Origin': AccessHeader,
+                        'token': this.token,
+                    },
+                })
+                .then(res => res.json())
+                .then(res => {
+                    console.log('request courseDel res: ', res)
+                    if (res.code != 0) {
+                        console.warn('request courseDEl error: ', res.code, res.msg)
+                        return
+                    }
+                    alert('删除课程成功！')
 
-                // 删除该课程
-                this.list.splice(index, 1)
-            })
+                    // 删除该课程
+                    this.list.splice(index, 1)
+                })
 
         },
         // 刷新课程列表
-        Refresh () {
+        Refresh() {
             this.clickSearch()
         },
-        clickUpdateConfirm () {
-            alert('修改课程成功')
-        }
+
     },
 })
 

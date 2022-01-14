@@ -21,15 +21,27 @@
                     <button type="button" id="add-button" @click='clickAdd'>添加新课程</button>
                 </div>
 
-                <div id='form-box'>
-                    <div>课程修改</div>
+                <div id='form-box' v-if="showForm">
+                    <div>
+                        <div>课程修改</div>
+                        <button @click.stop='clickCloseForm'>关闭</button>
+                    </div>
                     <hr>
                     <div id='form-body'>
-                        课程名：<input type="text" v-model="putForm.name"/>
-                        教师名：<input type="text" v-model='putForm.teacher'/>
-                        积分数：<input type="number" v-model='putForm.price'/>
-                        课程简介： <textarea></textarea>
-                        图片地址：<input type="text" v-model="putForm.image"/>
+                        课程名：
+                        <input type="text" v-model="putForm.name"/>
+                        教师名：
+                        <input type="text" v-model='putForm.teacher'/>
+                        开课时间：
+                        <input type="date" min="2017-01-01" max="2023-01-01" class="time" v-model='putForm.startTime'/>
+                        结课时间：
+                        <input type="date" min="2017-01-01" max="2023-01-01" class="time" v-model='putForm.endTime'/>
+                        积分数：
+                        <input type="number" v-model.number='putForm.price'/>
+                        课程简介：
+                        <textarea v-model='putForm.desc'></textarea>
+                        图片地址：
+                        <input type="text" v-model="putForm.image"/>
                     </div>
                     <button @click.stop='clickUpdateConfirm'>确认</button>
                 </div>
@@ -37,7 +49,6 @@
             </template>
             <template v-for="(item, index) in list">
                 <div class="item-box">
-                    <!-- <div>{{ item }}</div> -->
                     <img :src="item.image" class='item-img'>
                     <div class="item-info">
                         <div class='item-title'>{{ item.name }}</div>
@@ -47,7 +58,7 @@
                         <div>简介：{{item.desc}}</div>
                     </div>
                     <div class="item-buttons">
-                        <button type="button" id="update-button" @click='clickUpdate'>修改</button>
+                        <button type="button" id="update-button" @click='clickUpdate(item, $event)'>修改</button>
                         <button type="button" id="del-button" @click.stop='clickDel(item.id, index, $event)'>删除</button>
                     </div>
                 </div>
