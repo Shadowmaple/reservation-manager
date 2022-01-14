@@ -57,13 +57,13 @@ const app = Vue.createApp({
             showSearch: true,
             key: '', // 搜索关键字
             // 课程修改的表单内容
-            showForm: false,
+            showForm: true,
             putForm: OriginPutForm,
             formIdx: 0,
         }
     },
     computed: {},
-    created () {
+    created() {
         this.Refresh()
     },
     methods: {
@@ -163,7 +163,6 @@ const app = Vue.createApp({
                 'period': 100,
             }
             let index = this.formIdx
-            console.log('---------', index, JSON.stringify(data))
 
             // 更新课程请求
             fetch(url, {
@@ -183,9 +182,9 @@ const app = Vue.createApp({
                         return
                     }
 
-                    alert('修改课程成功')
                     this.showForm = false
                     this.putForm = OriginPutForm
+                    alert('修改课程成功')
 
                     // 更新课程列表
                     this.list[index] = form
