@@ -1,0 +1,101 @@
+#app {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
+.item-box {
+    background-color: rgb(214, 226, 228);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 1000px;
+    padding: 20px;
+    border: 4px solid rgb(0, 153, 255);
+    margin: 5px 0;
+}
+
+.item-img {
+    height: 150px;
+    width: 220px;
+}
+
+.item-info {
+    /* background-color: antiquewhite; */
+    display: flex;
+    flex-direction: column;
+    margin-left: 50px;
+    width: 60%;
+}
+
+.item-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+#update-button {
+    height: 40px;
+    width: 80px;
+    background-color: rgb(94, 197, 238);
+    color: white;
+    margin: 10px 0;
+}
+
+#del-button {
+    height: 40px;
+    width: 80px;
+    background: rgb(218, 94, 94);
+    color: white;
+}
+
+.search-box {
+    /* background-color: aquamarine; */
+    width: 1000px;
+    text-align: center;
+    margin: 20px 0;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+#input {
+    margin: 0px 10px;
+    border: 2px solid rgb(0, 153, 255);
+    width: 200px;
+    padding: 5px 10px;
+}
+
+#input-button {
+    width: 75px;
+}
+
+#add-button {
+    height: 40px;
+    position: relative;
+    left: 250px;
+    height: 40px;
+    width: 100px;
+    background-color: rgb(94, 197, 238);
+    color: white;
+}
+
+.item-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+#header {
+    background-color: bisque;
+    height: 30px;
+    width: 100%;
+    padding: 2px 20px;
+    margin: 0;
+    border-bottom: 2px solid blue;
+}
