@@ -101,8 +101,8 @@ body {
 }
 
 #form-box {
-    position: absolute;
-    top: 200px;
+    position: fixed;
+    top: 100px;
     height: 400px;
     width: 400px;
     background-color: blanchedalmond;

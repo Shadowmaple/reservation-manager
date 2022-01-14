@@ -58,7 +58,7 @@
                         <div>简介：{{item.desc}}</div>
                     </div>
                     <div class="item-buttons">
-                        <button type="button" id="update-button" @click='clickUpdate(item, $event)'>修改</button>
+                        <button type="button" id="update-button" @click='clickUpdate(item, index, $event)'>修改</button>
                         <button type="button" id="del-button" @click.stop='clickDel(item.id, index, $event)'>删除</button>
                     </div>
                 </div>
