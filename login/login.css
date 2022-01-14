@@ -39,6 +39,26 @@ body{
     align-items: center;
 }
 
-input{
+.username{
+    height: 30px;
+    width: 65%;
+    border-width: 1px;
+    border-color: rgb(239,239,239);
+    border-style: solid;
+    border-radius: 5px;
+    margin-left: 85px;
+}
+.userpwd{
+    height: 30px;
+    margin-top: 20px;
+    width: 65%;
+    border-width: 1px;
+    border-color: rgb(239,239,239);
+    border-style: solid;
+    border-radius: 5px;
+    margin-left: 85px;
+}
+
+input:focus{
     outline: none;
 }

@@ -16,16 +16,16 @@ function sendclick() {
   var period = document.getElementById("period").value
   var intro = document.getElementById("intro").value
   var data = {
-    "id": 0,
+    "id": Number(0),
     "name": course_name,
     "teacher": teacher_name,
     "desc": intro,
-    "total": restrict_number,
+    "total": Number(restrict_number),
     "image": imgurl,
-    "price": course_point,
+    "price": Number(course_point),
     "start_time": start_time,
     "end_time": end_time,
-    "period": period
+    "period": Number(period)
   }
 
   // 向后台发起post请求
