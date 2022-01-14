@@ -1,5 +1,5 @@
 const AccessHeader = 'http://127.0.0.1:8080'
-const Token = "123"
+const Token = "eyJhbGciOiJIUzUxMiJ9.eyJpZCI6MTMsInRpbWUiOjE2NDIxNDQwNDA3MzEsImV4cCI6MTY0MjMyNDA0MCwib3BlbmlkIjoibzJxTmM1TWNWbWpDYnlyWW04QW1LWW95ZVBIdyJ9.mdZZ_KknQtimAN9MdTcb7J7AZaqgjCp_d_VzhB2oGZJJLZuIhv3Mx3NQZzh8gYBsUDcu4dMiou8Xso1pfJNoeQ"
 
 // APIs
 const ApiHost = 'http://127.0.0.1:8080'
@@ -57,7 +57,7 @@ const app = Vue.createApp({
             showSearch: true,
             key: '', // 搜索关键字
             // 课程修改的表单内容
-            showForm: true,
+            showForm: false,
             putForm: OriginPutForm,
             formIdx: 0,
         }
@@ -89,8 +89,8 @@ const app = Vue.createApp({
                         return
                     }
                     let list = new Array
-                    for (let i = 0; i < res.data.length; i++) {
-                        let item = res.data[i]
+                    for (let i = 0; i < res.data.list.length; i++) {
+                        let item = res.data.list[i]
                         list.push({
                             id: item.course_id,
                             name: item.course_name,
@@ -111,8 +111,6 @@ const app = Vue.createApp({
                 .catch(error => {
                     console.error(error)
                 })
-
-            console.log('list---', this.list)
         },
         // 添加新课程
         clickAdd() {
