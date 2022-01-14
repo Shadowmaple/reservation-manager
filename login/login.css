@@ -23,10 +23,12 @@ body{
 }
 .loginheader{
     /* align-content: center; */
-    text-align: center;
-    height: 30px;
+    height: 100px;
     width: 100%;
-    background-color: rgb(78,110,242);
+    background-color: white;
+    border-bottom-style: solid;
+    border-bottom-color:rgb(239,239,239);
+    border-width: 3px;
 }
 .login{
     display: flex;
@@ -35,4 +37,8 @@ body{
     flex-direction: column;
     /* justify-content: center; */
     align-items: center;
+}
+
+input{
+    outline: none;
 }

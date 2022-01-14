@@ -10,7 +10,7 @@
         <img id="back" onclick="clickback()" src="./image/back.png" style="width: 50px;height: 50px;position: fixed;left: 50px;top: 50px;">
         <div class="form">
             <div class="header">添加课程</div>
-            <div class="form-item">
+            <div class="form-item" style="margin-top: 40px;">
                 <img src="./image/course.png" style="width: 20px;height: 20px;vertical-align: middle;">
                 <label>课程名:</label>
                 <input id="course_name" style="margin-left: 50px;" type="text">
@@ -23,7 +23,7 @@
             <div class="form-item">
                 <img src="./image/person.png" style="width: 20px;height: 20px;vertical-align: middle;">
                 <label>班级限制人数:</label>
-                <input id="restrict_number" style="margin-left: 4px;" type="text">
+                <input id="restrict_number" style="margin-left: 4px;" type="number">
             </div>
             <div class="form-item">
                 <img src="./image/time.png" style="width: 20px;height: 20px;vertical-align: middle;">
@@ -43,12 +43,12 @@
             <div class="form-item">
                 <img src="./image/point.png" style="width: 20px;height: 20px;vertical-align: middle;">
                 <label>课程所需积分:</label>
-                <input id="course_point" style="margin-left: 2px;" type="text">
+                <input id="course_point" style="margin-left: 2px;" type="number">
             </div>
             <div class="form-item">
                 <img src="./image/period.png" style="width: 20px;height: 20px;vertical-align: middle;">
                 <label>课时:</label>
-                <input id="period" style="margin-left: 63px;" type="text">
+                <input id="period" style="margin-left: 63px;" type="number">
             </div>
             <div class="form-item">
                 <img src="./image/intro.png" style="width: 20px;height: 20px;vertical-align: middle;">
@@ -56,7 +56,7 @@
                 <textarea id="intro" style="width: 160px;height: 60px;vertical-align: top;margin-left: 33px;"  type="text"></textarea>
             </div>
             <button class="button1" onclick="sendclick()">发布</button>
-        </>
+        </div>
         
     </div>
     <script src="addcourse.js"></script>
