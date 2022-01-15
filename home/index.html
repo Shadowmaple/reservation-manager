@@ -1,84 +1,90 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <meta charset="utf-8">
-    <script src="../public/vue.global.js"></script>
-    <link rel="stylesheet" type="text/css" href="index.css">
-</head>
+    <head>
+        <meta charset="utf-8">
+        <script src="../public/vue.global.js"></script>
+        <link rel="stylesheet" type="text/css" href="index.css">
+    </head>
 
-<body>
-    <p id='header'>
-        课程管理
-    </p>
-
-    <p id='app'>
-        <template v-if="showSearch">
-            <div class="search-box">
-                <input type="text" placeholder="输入课程名" id="input" v-model='key' @keyup.enter='clickSearch' />
-                <button type="button" id="input-button" @click='clickSearch'>查找</button>
-                <button type="button" id="add-button" @click='clickAdd'>添加新课程</button>
+    <body>
+        <div id='header'>
+            <div class="header-title">课程管理</div>
+            <div class="header-right">
+                <div style="margin-right: 10px;">我的</div>
+                <image src="image/user-avatar.png"></image>
             </div>
+        </div>
 
-            <div id='form-box' v-if="showForm">
-                <div class="header-box">
-                    <div class='form-title'>课程修改</div>
-                    <img src="./image/close.png" class="close" @click.stop='clickCloseForm'></img>
+        <p id='app'>
+            <template v-if="showSearch">
+                <div class="search-box">
+                    <input type="text" placeholder="输入课程名" id="input" v-model='key' @keyup.enter='clickSearch' />
+                    <button type="button" id="input-button" @click='clickSearch'>查找</button>
+                    <button type="button" id="add-button" @click='clickAdd'>添加新课程</button>
                 </div>
 
-                <div id='form-body'>
-                    <div class="form-item" style="margin-top: 60px;">
-                        <div class="form-column">课程名：</div>
-                        <input type="text" v-model="putForm.name" class="form-input" />
+                <div id='form-box' v-if="showForm">
+                    <div class="header-box">
+                        <div class='form-title'>课程修改</div>
+                        <img src="./image/close.png" class="close" @click.stop='clickCloseForm'></img>
                     </div>
-                    <div class="form-item">
-                        <div class="form-column">教师名：</div>
-                        <input type="text" v-model='putForm.teacher' class="form-input" />
+
+                    <div id='form-body'>
+                        <div class="form-item" style="margin-top: 60px;">
+                            <div class="form-column">课程名：</div>
+                            <input type="text" v-model="putForm.name" class="form-input" />
+                        </div>
+                        <div class="form-item">
+                            <div class="form-column">教师名：</div>
+                            <input type="text" v-model='putForm.teacher' class="form-input" />
+                        </div>
+                        <div class="form-item">
+                            <div class="form-column">开课时间：</div>
+                            <input type="date" min="2017-01-01" max="2023-01-01" class="form-input"
+                                v-model='putForm.startTime' class="form-input" />
+                        </div>
+                        <div class="form-item">
+                            <div class="form-column">结课时间：</div>
+                            <input type="date" min="2017-01-01" max="2023-01-01" class="form-input"
+                                v-model='putForm.endTime' class="form-input" />
+                        </div>
+                        <div class="form-item">
+                            <div class="form-column">积分数：</div>
+                            <input type="number" v-model.number='putForm.price' class="form-input" />
+                        </div>
+                        <div class="form-item">
+                            <div class="form-column">课程简介：</div>
+                            <textarea style="vertical-align: top;" v-model='putForm.desc' class="form-input"></textarea>
+                        </div>
                     </div>
-                    <div class="form-item">
-                        <div class="form-column">开课时间：</div>
-                        <input type="date" min="2017-01-01" max="2023-01-01" class="form-input" v-model='putForm.startTime' class="form-input" />
-                    </div>
-                    <div class="form-item">
-                        <div class="form-column">结课时间：</div>
-                        <input type="date" min="2017-01-01" max="2023-01-01" class="form-input" v-model='putForm.endTime' class="form-input" />
-                    </div>
-                    <div class="form-item">
-                        <div class="form-column">积分数：</div>
-                        <input type="number" v-model.number='putForm.price' class="form-input" />
-                    </div>
-                    <div class="form-item">
-                        <div class="form-column">课程简介：</div>
-                        <textarea style="vertical-align: top;" v-model='putForm.desc' class="form-input"></textarea>
+
+                    <div id="form-footer">
+                        <button class="cancel" @click.stop='clickCloseForm'>取消</button>
+                        <button class="confirm" @click.stop='clickUpdateConfirm'>确认</button>
                     </div>
                 </div>
 
-                <div id="form-footer">
-                    <button class="cancel" @click.stop='clickCloseForm'>取消</button>
-                    <button class="confirm" @click.stop='clickUpdateConfirm'>确认</button>
+            </template>
+            <template v-for="(item, index) in list">
+                <div class="item-box">
+                    <img :src="item.image" class='item-img'>
+                    <div class="item-info">
+                        <div class='item-title'>{{ item.name }}</div>
+                        <div>老师：{{ item.teacher }}</div>
+                        <div>时间：{{ item.startTime }} ~ {{ item.endTime }}</div>
+                        <div>预约人数：{{ item.currentNum }} / {{ item.total }}</div>
+                        <div>简介：{{item.desc}}</div>
+                    </div>
+                    <div class="item-buttons">
+                        <button type="button" id="update-button" @click='clickUpdate(item, $event)'>修改</button>
+                        <button type="button" id="del-button" @click.stop='clickDel(item.id, index, $event)'>删除</button>
+                    </div>
                 </div>
-            </div>
+            </template>
+        </p>
 
-        </template>
-        <template v-for="(item, index) in list">
-            <div class="item-box">
-                <img :src="item.image" class='item-img'>
-                <div class="item-info">
-                    <div class='item-title'>{{ item.name }}</div>
-                    <div>老师：{{ item.teacher }}</div>
-                    <div>时间：{{ item.startTime }} ~ {{ item.endTime }}</div>
-                    <div>预约人数：{{ item.currentNum }} / {{ item.total }}</div>
-                    <div>简介：{{item.desc}}</div>
-                </div>
-                <div class="item-buttons">
-                    <button type="button" id="update-button" @click='clickUpdate(item, $event)'>修改</button>
-                    <button type="button" id="del-button" @click.stop='clickDel(item.id, index, $event)'>删除</button>
-                </div>
-            </div>
-        </template>
-    </p>
-
-    <script src="./index.js"></script>
-</body>
+        <script src="./index.js"></script>
+    </body>
 
 </html>

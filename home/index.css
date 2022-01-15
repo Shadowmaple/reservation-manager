@@ -1,3 +1,32 @@
+body {
+    padding: 0;
+    margin: 0;
+    background-color: #F2F2F7;
+}
+
+#header {
+    height: 50px;
+    width: 100%;
+    padding: 2px 20px;
+    margin: 0;
+    border-bottom: 1px solid rgb(0, 153, 255);
+    background-color: #FFFFFF;
+}
+
+.header-title {
+    font-size: 18px;
+    margin-top: 10px;
+    margin-left: 50px;
+}
+
+.header-right {
+    position: absolute;
+    right: 40px;
+    top: 15px;
+    display: flex;
+    flex-direction: row;
+}
+
 #app {
     display: flex;
     flex-direction: column;
@@ -5,19 +34,14 @@
     align-items: center;
 }
 
-body {
-    padding: 0;
-    margin: 0;
-}
-
 .item-box {
-    background-color: rgb(214, 226, 228);
+    background-color: white;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     width: 1000px;
     padding: 20px;
-    border: 4px solid rgb(0, 153, 255);
+    border: 2px solid rgb(0, 153, 255);
     margin: 5px 0;
     border-radius: 8px;
 }
@@ -28,7 +52,6 @@ body {
 }
 
 .item-info {
-    /* background-color: antiquewhite; */
     display: flex;
     flex-direction: column;
     margin-left: 50px;
@@ -44,20 +67,23 @@ body {
 #update-button {
     height: 40px;
     width: 80px;
-    background-color: rgb(94, 197, 238);
+    background-color: #1890FF;
     color: white;
     margin: 10px 0;
+    border-radius: 3px;
+    border: 1px solid rgb(0, 0, 0, 0.2);
 }
 
 #del-button {
     height: 40px;
     width: 80px;
-    background: rgb(218, 94, 94);
-    color: white;
+    background: #EFEFEF;
+    color: rgb(0, 0, 0);
+    border-radius: 3px;
+    border: 1px solid rgb(0, 0, 0, 0.2);
 }
 
 .search-box {
-    /* background-color: aquamarine; */
     width: 1000px;
     text-align: center;
     margin: 20px 0;
@@ -69,36 +95,34 @@ body {
 #input {
     margin: 0px 10px;
     border: 2px solid rgb(0, 153, 255);
-    width: 200px;
-    padding: 5px 10px;
+    width: 300px;
+    padding: 15px 10px;
+    border-radius: 3px;
 }
 
 #input-button {
     width: 75px;
+    border-radius: 3px;
+    border: 1px solid rgb(0, 0, 0, 0.2);
+    height: 33.2px;
 }
 
 #add-button {
     height: 40px;
     position: relative;
-    left: 250px;
+    left: 210px;
     height: 40px;
     width: 100px;
-    background-color: rgb(94, 197, 238);
+    background-color: #1890FF;
+    ;
     color: white;
+    border-radius: 3px;
+    border: 1px solid rgb(0, 0, 0, 0.2);
 }
 
 .item-title {
     font-size: 24px;
     margin-bottom: 10px;
-}
-
-#header {
-    /* background-color: bisque; */
-    height: 30px;
-    width: 100%;
-    padding: 2px 20px;
-    margin: 0;
-    border-bottom: 2px solid blue;
 }
 
 #form-box {
@@ -117,6 +141,7 @@ body {
     justify-content: flex-start;
     align-items: flex-start;
     width: 100%;
+    height: 369px;
 }
 
 .form-item {
@@ -147,7 +172,7 @@ body {
     padding: 5px 10px;
 }
 
-.header-box{
+.header-box {
     height: 40px;
     border-bottom: 2px solid rgb(0, 0, 0, 0.2);
 }
@@ -159,7 +184,7 @@ body {
     font-size: 17px;
 }
 
-.close{
+.close {
     margin-left: 500px;
     width: 30px;
     height: 30px;
@@ -175,13 +200,14 @@ body {
     background-color: #1890FF;
     color: white;
     margin-left: 10px;
+    border: 1px solid rgb(0, 0, 0, 0.2);
 }
 
 .cancel {
     width: 70px;
     height: 40px;
     border-radius: 8px;
-    /* background-color: white; */
+    border: 1px solid rgb(0, 0, 0, 0.2);
 }
 
 #form-footer {
@@ -189,7 +215,6 @@ body {
     flex-direction: row;
     justify-content: flex-end;
     border-top: 2px solid rgb(0, 0, 0, 0.2);
-    margin-top: 20px;
-    padding-top: 10px;
+    padding-top: 15px;
     padding-right: 10px;
 }

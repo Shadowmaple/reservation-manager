@@ -57,7 +57,7 @@ const app = Vue.createApp({
             showSearch: true,
             key: '', // 搜索关键字
             // 课程修改的表单内容
-            showForm: true,
+            showForm: false,
             putForm: OriginPutForm,
             formIdx: 0,
         }
@@ -110,6 +110,7 @@ const app = Vue.createApp({
                 })
                 .catch(error => {
                     console.error(error)
+                    alert('程序内部错误！')
                 })
         },
         // 添加新课程
